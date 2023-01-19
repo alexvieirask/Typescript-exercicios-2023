@@ -1,3 +1,5 @@
+import { domInjector } from '../decorators/dom-injector.js';
+import { inspecionar } from '../decorators/inspencionar.js';
 import { logarTempoDeExecucao } from '../decorators/logar-tempo-tempo-de-execucao.js';
 import { DiasDaSemana } from '../enums/dias-da-semana.js';
 import { Negociacao } from '../models/negociacao.js';
@@ -6,6 +8,7 @@ import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
 
 export class NegociacaoController {
+    @domInjector("#data")
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
@@ -19,6 +22,7 @@ export class NegociacaoController {
         this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
     }
+    @inspecionar
     @logarTempoDeExecucao()
     public adiciona(): void {
         /*
